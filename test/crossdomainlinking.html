@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Set up cross-domain tracking for multiple domains Test Suite</title>
+  <!-- Load local jQuery. -->
+  <script src="../bower_components/jquery/jquery.js"></script>
+  <!-- Load local QUnit. -->
+  <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css" media="screen">
+  <script src="../bower_components/qunit/qunit/qunit.js"></script>
+  <!-- Load local lib and tests. -->
+  <script src="../src/crossdomainlinking.js"></script>
+  <script src="crossdomainlinking_test.js"></script>
+  <!-- Removing access to jQuery and $. But it'll still be available as _$, if
+       you REALLY want to mess around with jQuery in the console. REMEMBER WE
+       ARE TESTING A PLUGIN HERE, THIS HELPS ENSURE BEST PRACTICES. REALLY. -->
+  <script>window._$ = jQuery.noConflict(true);</script>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture">
+    <ul>
+        <li><a href="innerlink">Some inner link 1</a></li>
+        <li><a href="/innerlink">Some inner link 2</a></li>
+        <li><a href="related">Some inner link 3</a></li>
+        <li><a href="/related">Some inner link 4</a></li>
+    </ul>
+    <ul>
+        <li><a href="http://external">Some external link 1</a></li>
+        <li><a href="https://external">Some inner link 2</a></li>
+        <li><a href="//external">Some inner link 2</a></li>
+    </ul>
+    <ul>
+        <li><a href="http://related/link?a=b">Some related link 1</a></li>
+        <li><a href="https://related/link">Some related link 2</a></li>
+        <li><a href="//related/link">Some related link 2</a></li>
+    </ul>
+  </div>
+</body>
+</html>
