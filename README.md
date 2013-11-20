@@ -43,7 +43,7 @@ In your web page:
 <script src="dist/crossdomainlinking.min.js"></script>
 <script>
 jQuery(function($) {
-  $("someselector").crossdomainlinking(['domain1','domain2','domain3']);
+  $("someselector").crossdomainlinking(['A.com','B.com','C.com']);
 });
 </script>
 ```
