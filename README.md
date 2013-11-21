@@ -62,4 +62,5 @@ jQuery(function($) {
 
 ## Release History
 0.0.2 Added default option por domain list
+
 0.0.1 First version
