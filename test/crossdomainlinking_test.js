@@ -78,4 +78,20 @@ var _gaq = {push: function(){}};
     }
   });
 
+  test('sets up cross links using default options', function (){
+    var i, links, link;
+    $.crossdomainlinking.domains = ['related', 'external'];
+    links = this.elems.find('a');
+    this.elems.crossdomainlinking();
+    for(i = 0; i <4; i++){
+      links.eq(i).click();
+      equal(pushedValue, null);
+    }
+    for(; i < 10; i++){
+      link = links.eq(i);
+      link.trigger("click");
+      deepEqual(pushedValue, ['_link',link[0].href]);
+    }
+  });
+
 }(jQuery));

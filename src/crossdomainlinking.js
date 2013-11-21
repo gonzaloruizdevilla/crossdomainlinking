@@ -10,7 +10,8 @@
 
 
   // Collection method.
-  $.fn.crossdomainlinking = function (domains) {
+  $.fn.crossdomainlinking = function (_domains) {
+    var domains = $.crossdomainlinking.domains || _domains;
     if (!domains || !domains.length) {
       return this;
     }
@@ -25,5 +26,7 @@
       });
     });
   };
+
+  $.crossdomainlinking = {};
 
 }(jQuery));

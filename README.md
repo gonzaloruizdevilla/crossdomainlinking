@@ -25,7 +25,7 @@ _gaq.push(['_trackPageview']);
 (function() {
 var ga = document.createElement('script'); ga.type = 'text/javascript';
   ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
   'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0];
   s.parentNode.insertBefore(ga, s);
@@ -35,18 +35,31 @@ var s = document.getElementsByTagName('script')[0];
 ```
 Since the same tracking number (UA-XXXXXXXX-N) appears on all pages, the data from the different domains is consolidated under that one number.
 
-After you set up your tracking code, you then need to set up cross links.
-In your web page:
+After you set up your tracking code, then you need to set up cross links in your web page:
 
 ```html
 <script src="jquery.js"></script>
 <script src="dist/crossdomainlinking.min.js"></script>
 <script>
 jQuery(function($) {
-  $("someselector").crossdomainlinking(['A.com','B.com','C.com']);
+  $("someselector").crossdomainlinking(['A.com', 'B.com', 'C.com']);
+});
+</script>
+```
+
+If the DOM changes and new links appear in the web page, you need to reregister the cross linking behaviour.
+
+You can set a list of domains on `crossdomainlinking` that will be used by default:
+
+```html
+<script>
+jQuery(function($) {
+  $.crossdomainlinking.domains = ['A.com', 'B.com', 'C.com'];
+  $("someselector").crossdomainlinking();
 });
 </script>
 ```
 
 ## Release History
+0.0.2 Added default option por domain list
 0.0.1 First version
